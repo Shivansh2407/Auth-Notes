@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 
 const Note = (props) => {
     return (
-        <div className="singleNote">
-            {props.content}
-        </div>
+        <tr>
+            <td>{props.content}</td>
+            <td>{props.name}</td>
+            <td>{props.date}</td>
+        </tr>
     )
 }
 
 Note.propTypes = {
-    content: PropTypes.string
+    name: PropTypes.string,
+    content: PropTypes.string,
+    date: PropTypes.instanceOf(Date)
 }
 
 export default Note;

@@ -8,7 +8,7 @@ class Login extends Component {
             email: '',
             password: '',
             fireErrors: '',
-            formTitle: 'Login',
+            formTitle: 'Crop Scouting Login',
             loginBtn: true
         }
     }

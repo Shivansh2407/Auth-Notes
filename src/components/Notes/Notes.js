@@ -15,12 +15,14 @@ class Notes extends Component {
         }
     }
 
-    AddNewNote = (note) => {
+    AddNewNote = (name, note, date) => {
         const BackUpState = this.state.notes;
-        BackUpState.push({id: BackUpState.length + 1, content: note});
+        BackUpState.push({id: BackUpState.length + 1, name: name, content: note, date: date});
         fire.database().ref('Notes/').push({
             id: this.state.notes.length + 1,
-            note: note
+            name: name,
+            note: note,
+            date: date
         }).then((data)=>{
             //success callback
             this.setState({
@@ -37,7 +39,7 @@ class Notes extends Component {
         fire.database().ref('Notes/').once('value', function
         (snapshot) {
             snapshot.forEach(function(childSnapshot){
-                BackUpState.push({id: BackUpState.length + 1, content: childSnapshot.val().note});
+                BackUpState.push({id: BackUpState.length + 1,name: childSnapshot.val().name, content: childSnapshot.val().note, date: childSnapshot.val().date});
             })
         });
         this.setState({
@@ -57,7 +59,12 @@ class Notes extends Component {
     render(){
         return (
             <div className="notesApp">
-                <h2>My Notes</h2>
+                <h2>Crop Scouting Notes</h2>
+                <tr>
+                <td>Note Content</td>
+                <td>Author</td>
+                <td>Date</td>
+                </tr>
                 {
                     this.state.loading ? 
                     (
@@ -67,7 +74,10 @@ class Notes extends Component {
                     ) : 
                     this.state.notes.map((note) => {
                         return (
-                            <Note content = {note.content} 
+                            <Note 
+                                name = {note.name}
+                                content = {note.content} 
+                                date = {note.date}
                                 id = {note.id} 
                                 key = {note.id} />
                         )
