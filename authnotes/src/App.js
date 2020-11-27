@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Note from'./Note/Note';
+import AddNote from'./AddNote/AddNoteForm';
 import './App.css';
 
 
@@ -15,7 +16,16 @@ class App extends Component {
       ]
     }
   }
-    render(){
+
+  addNote =(note) => {
+    const BackUpState = this.state.notes;
+    BackUpState.push({id: BackUpState.length + 1, noteContent: note})
+    this.setState({
+      notes: BackUpState
+    });
+  }
+
+  render(){
     return (
       <div className="App">
         {
@@ -28,7 +38,8 @@ class App extends Component {
           )
         })
         }
-      </div>
+        <AddNote addNote={this.addNote}/>
+        </div>
     );
   }
 }
