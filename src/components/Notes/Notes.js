@@ -60,11 +60,13 @@ class Notes extends Component {
         return (
             <div className="notesApp">
                 <h2>Crop Scouting Notes</h2>
+                <table id="myTable">
                 <tr>
-                <td>Note Content</td>
-                <td>Author</td>
-                <td>Date</td>
+                    <th onclick="sortTable(0)">Note Content</th>
+                    <th onclick="sortTable(1)">Author</th>
+                    <th onclick="sortTable(2)">Date</th>
                 </tr>
+               
                 {
                     this.state.loading ? 
                     (
@@ -83,7 +85,12 @@ class Notes extends Component {
                         )
                     })
                 }
+                </table>
+                <br/>
+                <div>
                 <AddNewNote addNote={this.AddNewNote} />
+                </div>
+                <br/>
             </div>
         );
     }

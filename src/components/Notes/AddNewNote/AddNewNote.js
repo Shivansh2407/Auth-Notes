@@ -64,8 +64,9 @@ class AddNewNote extends Component {
                 <input type="date" 
                     className="DateField"
                     onChange={this.handleUserInput2}
-                    value={this.state.newDateContent} />
+                    value={this.state.newDateContent}/>
                 </div>
+                <br/><br/>
                 <button 
                     className="addNoteBtn"
                     onClick={this.addNote}>Add Note</button>
