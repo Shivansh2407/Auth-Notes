@@ -5,6 +5,10 @@ An application to Store User Specific Notes, authenticated using Firebase Login.
 ### Test Link 
 The App is deployed at : https://authnotes-8c6ea.web.app/
 
+Test Credentials : 
+Email - admin@mail.com
+Password - 123456
+
 ### Local Setup
 
  1. Clone the Repository : `git clone   
